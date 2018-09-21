@@ -13,6 +13,7 @@ public class UMValidator {
 
     public boolean isInputEditTextFilled(TextInputEditText textInputEditText, TextInputLayout textInputLayout, String message) {
         String value = textInputEditText.getText().toString().trim();
+        
     }
 
 }
