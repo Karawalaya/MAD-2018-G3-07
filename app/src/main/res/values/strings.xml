@@ -1,0 +1,24 @@
+<resources>
+    <string name="string_id_app_name">AlliantBankApp</string>
+    <string name="string_id_Action_Bar_Title">AlliantApp</string>
+    <string name="string_id_navigation_menu_option_01">Update Details</string>
+    <string name="string_id_navigation_menu_option_02">Account Information</string>
+    <string name="string_id_navigation_menu_option_03">Account Balance</string>
+    <string name="string_id_navigation_menu_option_04">Transaction History</string>
+    <string name="string_id_navigation_menu_option_05">Make a Transaction</string>
+    <string name="string_id_navigation_menu_option_06">Apply for Loan</string>
+    <string name="string_id_navigation_menu_option_07">Lodge a Complaint</string>
+    <string name="string_id_navigation_menu_section_01">Personal Information</string>
+    <string name="string_id_navigation_menu_section_02">Account Balance &amp; Transactions</string>
+    <string name="string_id_navigation_menu_section_03">Loans &amp; Leases</string>
+    <string name="string_id_navigation_menu_section_04">Service</string>
+
+    <string name="string_id_navigation_drawer_open">Open navigation drawer</string>
+    <string name="string_id_navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="string_id_splash_welcome">Alliant Bank</string>
+
+    <string name="string_id_important_menu_option_01">Home</string>
+
+
+</resources>
