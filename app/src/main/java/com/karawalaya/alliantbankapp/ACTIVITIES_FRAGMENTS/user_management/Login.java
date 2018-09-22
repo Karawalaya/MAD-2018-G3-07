@@ -16,7 +16,7 @@ import com.karawalaya.alliantbankapp.DAO_SERVICE.user_management.UserManagementD
 import com.karawalaya.alliantbankapp.POJO_MODEL.user_management.UMValidator;
 import com.karawalaya.alliantbankapp.R;
 
-public class Login extends AppCompatActivity implements View.OnClickListener {
+public class Login extends AppCompatActivity implements View.OnClickListener {asd
     private NestedScrollView nestedScrollView;
 
     private TextInputLayout textInputLayoutEmail;
