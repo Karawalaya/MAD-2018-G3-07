@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ACTIVITIES_FRAGMENTS.MainActivity"
+    tools:context=".ACTIVITIES_FRAGMENTS.transaction_management.MainActivity"
     tools:openDrawer="start">
 
     <LinearLayout

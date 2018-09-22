@@ -1,4 +1,4 @@
-package com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS;
+package com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS.transaction_management;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS.user_management.UpdateDetails;
 import com.karawalaya.alliantbankapp.R;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{

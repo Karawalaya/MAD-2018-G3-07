@@ -1,4 +1,4 @@
-package com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS;
+package com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS.transaction_management;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

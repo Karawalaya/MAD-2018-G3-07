@@ -1,4 +1,4 @@
-package com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS;
+package com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS.transaction_management;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+//import com.karawalaya.alliantbankapp.DAO_SERVICE.CommonDBHelper;
+import com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS.user_management.Login;
+import com.karawalaya.alliantbankapp.DAO_SERVICE.DBHelper;
 import com.karawalaya.alliantbankapp.R;
 
 public class Splash extends AppCompatActivity {
@@ -20,6 +23,9 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        //Initializing the database
+        DBHelper db = new DBHelper(this);
+
         splashImage = (ImageView) findViewById(R.id.splashImage);
         splashText = (TextView) findViewById(R.id.splashText);
 
@@ -27,16 +33,7 @@ public class Splash extends AppCompatActivity {
         splashImage.startAnimation(animation);
         splashText.startAnimation(animation);
 
-/*        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(Splash.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        }, SPLASH_TIMEOUT);*/
-
-        final Intent intent = new Intent(this, MainActivity.class);
+        final Intent intent = new Intent(this, Login.class);
         Thread timer = new Thread() {
             @Override
             public void run() {
@@ -52,6 +49,5 @@ public class Splash extends AppCompatActivity {
         };
 
         timer.start();
-
     }
 }
