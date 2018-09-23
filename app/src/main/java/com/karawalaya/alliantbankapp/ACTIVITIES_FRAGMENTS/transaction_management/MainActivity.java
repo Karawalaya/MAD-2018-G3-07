@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private HomePage homePage;
     private AccountInformation accountInformation;
     private UpdateDetails updateDetails;
+    private Customer customer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Log.e("Kara", "onCreate MainActivity");
         setContentView(R.layout.activity_main);
 
-        Customer customer = (Customer) getIntent().getSerializableExtra("customer");
+        customer = (Customer) getIntent().getSerializableExtra("customer");
 
         //Action bar is set
         mainActionBar = findViewById(R.id.main_action_bar);
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mainDrawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
-        homePage = new HomePage();
+
         accountInformation = new AccountInformation();
         updateDetails = new UpdateDetails();
 
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             transaction.add(R.id.fragment_container, new HomePage());
             transaction.addToBackStack(null);
             transaction.commit();*/
+
+            homePage = HomePage.newInstance(customer);
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, homePage).addToBackStack("Home").commit();
             getSupportActionBar().setSubtitle("HomePage");
             /*FragmentManager fragManager = getSupportFragmentManager();
@@ -63,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragTransact.replace(R.id.fragment_container, new HomePage());
             fragTransact.addToBackStack(null);
             fragTransact.commit();*/
+
 
         }
     }
