@@ -6,7 +6,7 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorSplash">#6600cc</color>
     <color name="colorPrimary01">#570c8e</color>
-
+    <color name="colorBlack">#000000</color>
     <color name="colorText">#FFFFFF</color>
     <color name="colorTextHint">#51d8c7</color>
 </resources>

@@ -39,19 +39,40 @@ public class TMQueries {
     public static final String TM_TABLE02 = "account";
     public static final String TM_TABLE02_COL01 = "customerId";
     public static final String TM_TABLE02_COL02 = "accountNo";
-    public static final String TM_TABLE02_COL03 = "balance";
+    public static final String TM_TABLE02_COL03 = "accountType";
+    public static final String TM_TABLE02_COL04 = "balance";
 
     public static final String TM_Query_TABLE02_CREATE = "CREATE TABLE " + TM_TABLE02 + "(" +
             TM_TABLE02_COL01 + " CHAR(10) NOT NULL," +
             TM_TABLE02_COL02 + " INTEGER NOT NULL UNIQUE," +
-            TM_TABLE02_COL03 + " REAL NOT NULL," +
+            TM_TABLE02_COL03 + " TEXT NOT NULL," +
+            TM_TABLE02_COL04 + " REAL NOT NULL," +
             "CONSTRAINT pk_account PRIMARY KEY ("  + TM_TABLE02_COL01 + "),"+
             "CONSTRAINT fk01_account FOREIGN KEY (" + TM_TABLE02_COL01 + ") REFERENCES " + TM_TABLE01 + " (" + TM_TABLE01_COL01 + ") ON DELETE CASCADE ON UPDATE CASCADE" +
             ");";
     public static final String TM_Query_TABLE02_SELECT_ALL = "SELECT * FROM " + TM_TABLE02 + ";";
-    public static final String TM_Query_TABLE02_INSERT = "INSERT INTO " + TM_TABLE02 + "(" + TM_TABLE02_COL01 + ", " + TM_TABLE02_COL02 + ", " + TM_TABLE02_COL03 + ") VALUES (?, ?, ?);";
+    public static final String TM_Query_TABLE02_INSERT = "INSERT INTO " + TM_TABLE02 + "(" + TM_TABLE02_COL01 + ", " + TM_TABLE02_COL02 + ", " + TM_TABLE02_COL03 + ", " + TM_TABLE02_COL04 + ") VALUES (?, ?, ?, ?);";
     public static final String TM_Query_TABLE02_DROP = "DROP TABLE IF EXISTS " + TM_TABLE02 + ";";
+    public static final String TM_Query_TABLE02_SELECT_SPECIFIC = "SELECT * FROM " + TM_TABLE02 + " WHERE " + TM_TABLE02_COL01 + " =?;";
 
     public static final String TM_Query_UM_FIND = "SELECT * FROM " + TM_TABLE01 + " c INNER JOIN " + TM_TABLE02 + " a ON c." + TM_TABLE01_COL01 + " = a." + TM_TABLE02_COL01 + " WHERE c." + TM_TABLE01_COL11 + "=? AND a." + TM_TABLE02_COL02 + "=?;";
     public static final String TM_Query_GET_CUSTOMER = "SELECT * FROM " + TM_TABLE01 + " WHERE " + TM_TABLE01_COL01 + " =?;";
+
+    public static final String TM_TABLE03 = "transactions";
+    public static final String TM_TABLE03_COL01 = "transactionId";
+    public static final String TM_TABLE03_COL02 = "creditAccount";
+    public static final String TM_TABLE03_COL03 = "transactionDate";
+    public static final String TM_TABLE03_COL04 = "transactionAmount";
+    public static final String TM_TABLE03_COL05 = "debitAccount";
+
+    public static final String TM_Query_TABLE03_CREATE = "CREATE TABLE " + TM_TABLE03 + "(" +
+            TM_TABLE03_COL01 + " INTEGER AUTOINCREMENT," +
+            TM_TABLE03_COL02 + " INTEGER NOT NULL," +
+            TM_TABLE03_COL03 + " INTEGER NOT NULL," +
+            TM_TABLE03_COL04 + " REAL NOT NULL," +
+            TM_TABLE03_COL05 + " INTEGER NOT NULL," +
+            "CONSTRAINT pk_transactions PRIMARY KEY ("  + TM_TABLE03_COL01 + "),"+
+            ");";
+    public static final String TM_Query_TABLE03_INSERT = "INSERT INTO " + TM_TABLE03 + "(" + TM_TABLE03_COL02 + ", " + TM_TABLE03_COL03 + ", " + TM_TABLE03_COL04 + ", " + TM_TABLE03_COL05 + ") VALUES (?, ?, ?, ?);";
+    public static final String TM_Query_TABLE03_DROP = "DROP TABLE IF EXISTS " + TM_TABLE03 + ";";
 }

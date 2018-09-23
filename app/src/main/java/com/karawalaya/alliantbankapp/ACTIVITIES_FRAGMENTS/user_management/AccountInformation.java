@@ -1,4 +1,4 @@
-package com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS.transaction_management;
+package com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS.user_management;
 
 import android.content.Context;
 import android.os.Bundle;

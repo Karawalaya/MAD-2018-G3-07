@@ -14,16 +14,38 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS.user_management.AccountInformation;
 import com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS.user_management.UpdateDetails;
+import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Account;
 import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Customer;
 import com.karawalaya.alliantbankapp.R;
 
+/**
+ * Here, Interface is used to provide pain free method to implement the 'onNavigationItemSelected' method.
+ */
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+    /**
+     * View Attributes that needs to be initialized at first sight.
+     */
     private Toolbar mainActionBar;
     private DrawerLayout mainDrawerLayout;
+
+    /**
+     * Fragment Attributes
+     */
+    //Transaction_Management
     private HomePage homePage;
+    private AccountBalance accountBalance;
+    private TransactionHistory transactionHistory;
+    private MakeATransaction makeATransaction;
+
+    //User_Management
     private AccountInformation accountInformation;
     private UpdateDetails updateDetails;
+
+    /**
+     * Special Attributes
+     */
     private Customer customer;
 
     @Override
@@ -32,34 +54,51 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Log.e("Kara", "onCreate MainActivity");
         setContentView(R.layout.activity_main);
 
+        /**
+         * customer object is filled after the onlineUser successfully logged in to the app.
+         */
         customer = (Customer) getIntent().getSerializableExtra("customer");
 
-        //Action bar is set
+        /**
+         * Here, the action bar is set.
+         */
         mainActionBar = findViewById(R.id.main_action_bar);
         setSupportActionBar(mainActionBar);
 
-        //Drawer layout is set
+        /**
+         * Here, the DrawerLayout and the NavigationView is initialized for further use.
+         */
         mainDrawerLayout = findViewById(R.id.main_drawer_layout);
         NavigationView navigationView = findViewById(R.id.navigation_view);
+        /**
+         * Due to this activity implementing the interface 'NavigationView.OnNavigationItemSelectedListener',
+         *      next line can be used to jump to the method, 'onNavigationItemSelected'.
+         */
         navigationView.setNavigationItemSelectedListener(this);
 
-        //three line drawer toggl
+        /**
+         * Here, the left upper DrawerToggle is set and synced.
+         */
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mainDrawerLayout, mainActionBar, R.string.string_id_navigation_drawer_open, R.string.string_id_navigation_drawer_close);
         mainDrawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
-
         accountInformation = new AccountInformation();
         updateDetails = new UpdateDetails();
 
+        /**
+         * Here, If there is no saved instance of the MainActivity, (Basically if the activity is destroyed or opening for the first time),
+         *         Homepage is set as the fragment for the initial view.
+         */
         if(savedInstanceState == null) {
             /*FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.add(R.id.fragment_container, new HomePage());
             transaction.addToBackStack(null);
             transaction.commit();*/
 
-            homePage = HomePage.newInstance(customer);
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, homePage).addToBackStack("Home").commit();
+            homePage = HomePage.getInstance(customer);
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, homePage).addToBackStack("Home").commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, homePage).commit();
             getSupportActionBar().setSubtitle("HomePage");
             /*FragmentManager fragManager = getSupportFragmentManager();
             FragmentTransaction fragTransact = fragManager.beginTransaction();
@@ -71,6 +110,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    /**
+     * Here, if the drawer is open, it will be closed first before doing whatever that should be done when the back button is pressed.
+     */
     @Override
     public void onBackPressed() {
         if (mainDrawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -80,6 +122,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    /**
+     * Here, Navigation List is optimized.
+     */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch(menuItem.getItemId()) {
@@ -104,18 +149,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.nav_drawer_menu_id_option_03:
                 Toast.makeText(this, "Account Balance", Toast.LENGTH_LONG).show();
+
+                accountBalance = AccountBalance.getInstance(customer);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, accountBalance, "AccountBalance").commit();
                 getSupportActionBar().setSubtitle("Account Balance");
                 menuItem.setCheckable(true);
+
                 break;
 
             case R.id.nav_drawer_menu_id_option_04:
                 Toast.makeText(this, "Transaction History", Toast.LENGTH_LONG).show();
+
+                transactionHistory = TransactionHistory.getInstance(customer);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, transactionHistory, "TransactionHistory").commit();
                 getSupportActionBar().setSubtitle("Transaction History");
                 menuItem.setCheckable(true);
                 break;
 
             case R.id.nav_drawer_menu_id_option_05:
                 Toast.makeText(this, "Make a Transaction", Toast.LENGTH_LONG).show();
+
+                /*makeATransaction = MakeATransaction.getInstance(customer);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, transactionHistory, "TransactionHistory").commit();*/
                 getSupportActionBar().setSubtitle("Make a Transaction");
                 menuItem.setCheckable(true);
                 break;

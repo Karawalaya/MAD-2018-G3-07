@@ -42,6 +42,7 @@ public class DBHelper extends SQLiteOpenHelper{
         sqLiteDatabase.execSQL(TMQueries.TM_Query_TABLE01_CREATE);
         sqLiteDatabase.execSQL(TMQueries.TM_Query_TABLE02_CREATE);
         sqLiteDatabase.execSQL(UMQueries.UM_Query_TABLE01_CREATE);
+        sqLiteDatabase.execSQL(TMQueries.TM_Query_TABLE03_CREATE);
 /*        if(this.initDB(sqLiteDatabase))
             System.out.println("DB Initialized");
         else
@@ -52,7 +53,8 @@ public class DBHelper extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         sqLiteDatabase.execSQL(UMQueries.UM_Query_TABLE01_DROP);
         sqLiteDatabase.execSQL(TMQueries.TM_Query_TABLE02_DROP);
-        sqLiteDatabase.execSQL(UMQueries.UM_Query_TABLE01_DROP);
+        sqLiteDatabase.execSQL(TMQueries.TM_Query_TABLE01_DROP);
+        sqLiteDatabase.execSQL(TMQueries.TM_Query_TABLE03_DROP);
         onCreate(sqLiteDatabase);
     }
 
@@ -63,12 +65,12 @@ public class DBHelper extends SQLiteOpenHelper{
 
             Populate pop01 = new Populate();
             pop01.setCustomer(new Customer("CUST000001", "Isuru", "Qwerty", 22, "Male", "12/2 Abcdefg Road", "Hijklmn", "Western", 10001, "0771234567", "isuruqwerty@gmail.com"));
-            pop01.setAccount(new Account("CUST000001", 123456789, 100000.23));
+            pop01.setAccount(new Account("CUST000001", 123456789, "Savings", 100000.23));
             populateList.add(pop01);
 
             Populate pop02 = new Populate();
             pop02.setCustomer(new Customer("CUST000002", "Keshi", "Uiop", 22, "Female", "16/6 Nopqrst Road", "uvwxyza", "Western", 10002, "0774567891", "keshiuiop@gmail.com"));
-            pop02.setAccount(new Account("CUST000002", 456789123, 200045.48));
+            pop02.setAccount(new Account("CUST000002", 456789123, "Savings", 200045.48));
             populateList.add(pop02);
 
             for(Populate pop: populateList) {
@@ -95,7 +97,8 @@ public class DBHelper extends SQLiteOpenHelper{
                     st02 = sqLiteDatabase.compileStatement(TMQueries.TM_Query_TABLE02_INSERT);
                     st02.bindString(1, pop.getAccount().getCustomerId());
                     st02.bindLong(2, pop.getAccount().getAccountNo());
-                    st02.bindDouble(3, pop.getAccount().getBalance());
+                    st02.bindString(3, pop.getAccount().getAccountType());
+                    st02.bindDouble(4, pop.getAccount().getBalance());
 
                     long rowId02 = st02.executeInsert();
 

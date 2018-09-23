@@ -71,6 +71,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.karawalaya.alliantbankapp.DAO_SERVICE.DBHelper;
 import com.karawalaya.alliantbankapp.DAO_SERVICE.transaction_management.TMQueries;

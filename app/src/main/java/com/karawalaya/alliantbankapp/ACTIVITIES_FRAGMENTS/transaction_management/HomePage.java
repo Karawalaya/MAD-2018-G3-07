@@ -16,16 +16,22 @@ import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Customer;
 import com.karawalaya.alliantbankapp.R;
 
 public class HomePage extends Fragment {
-    private static final String CUST_VAR = "customer";
+    //Bundle Arguments.
+    private static final String CUST_VAR_HOMEPAGE = "customer";
 
+    //Special Holding Attributes.
     private Customer customer = null;
 
+    //Views.
     private TextView textView;
 
-    public static HomePage newInstance(Customer cust) {
+    /**
+     * This was used to create a communication between the MainActivity and this fragment.
+     */
+    public static HomePage getInstance(Customer cust) {
         HomePage homepageFrag = new HomePage();
         Bundle homepageBundle = new Bundle();
-        homepageBundle.putSerializable(CUST_VAR, cust);
+        homepageBundle.putSerializable(CUST_VAR_HOMEPAGE, cust);
         homepageFrag.setArguments(homepageBundle);
 
         return homepageFrag;
@@ -33,76 +39,84 @@ public class HomePage extends Fragment {
 
     @Override
     public void onAttach(Context context) {
-        Log.i("Kara", "onAttach in HomePage");
+        Log.i("Kara", "FRAGMENT =========================== HomePage =========================== onAttach ===========================");
         super.onAttach(context);
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.i("Kara", "onCreate in HomePage");
+        Log.i("Kara", "FRAGMENT =========================== HomePage =========================== onCreate ===========================");
         super.onCreate(savedInstanceState);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.i("Kara", "onCreateView in HomePage");
-        View view = inflater.inflate(R.layout.fragment_home_page, container, false);
-        textView = view.findViewById(R.id.textView);
+        Log.i("Kara", "FRAGMENT =========================== HomePage =========================== onCreateView ===========================");
+        View fragHomepageView = inflater.inflate(R.layout.fragment_home_page, container, false);
+
+        initializeViews(fragHomepageView);
 
         if(getArguments() != null) {
-            customer = (Customer) getArguments().getSerializable(CUST_VAR);
+            customer = (Customer) getArguments().getSerializable(CUST_VAR_HOMEPAGE);
         }
 
         textView.setText(customer.getOnlineUser().getUserName());
-        return view;
+        return fragHomepageView;
+    }
+
+    /**
+     * This was used to initialize the views.
+     */
+    public void initializeViews(View fragHomepageView) {
+        textView = fragHomepageView.findViewById(R.id.textView);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        Log.i("Kara", "onActivityCreated in HomePage");
+        Log.i("Kara", "FRAGMENT =========================== HomePage =========================== onActivityCreated ===========================");
         super.onActivityCreated(savedInstanceState);
     }
 
     @Override
     public void onStart() {
-        Log.i("Kara", "onStart in HomePage");
+        Log.i("Kara", "FRAGMENT =========================== HomePage =========================== onStart ===========================");
         super.onStart();
     }
 
     @Override
     public void onResume() {
-        Log.i("Kara", "onResume in HomePage");
+        Log.i("Kara", "FRAGMENT =========================== HomePage =========================== onResume  ===========================");
         super.onResume();
     }
 
     @Override
     public void onPause() {
-        Log.i("Kara", "onPause in HomePage");
+        Log.i("Kara", "FRAGMENT =========================== HomePage =========================== onPause ===========================");
         super.onPause();
     }
 
     @Override
     public void onStop() {
-        Log.i("Kara", "onStop in HomePage");
+        Log.i("Kara", "FRAGMENT =========================== HomePage =========================== onStop ===========================");
         super.onStop();
     }
 
     @Override
     public void onDestroyView() {
-        Log.i("Kara", "onDestroyView in HomePage");
+        Log.i("Kara", "FRAGMENT =========================== HomePage =========================== onDestroyView ===========================");
         super.onDestroyView();
     }
 
     @Override
     public void onDestroy() {
-        Log.i("Kara", "onDestroy in HomePage");
+        Log.i("Kara", "FRAGMENT =========================== HomePage =========================== onDestroy ===========================");
         super.onDestroy();
     }
 
     @Override
     public void onDetach() {
-        Log.i("Kara", "onDetach in HomePage");
+        Log.i("Kara", "FRAGMENT =========================== HomePage =========================== onDetach ===========================");
         super.onDetach();
     }
 }
