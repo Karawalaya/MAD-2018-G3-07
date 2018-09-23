@@ -41,7 +41,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(TMQueries.TM_Query_TABLE01_CREATE);
         sqLiteDatabase.execSQL(TMQueries.TM_Query_TABLE02_CREATE);
-//        sqLiteDatabase.execSQL(UMQueries.UM_Query_TABLE01_CREATE);
+        sqLiteDatabase.execSQL(UMQueries.UM_Query_TABLE01_CREATE);
 /*        if(this.initDB(sqLiteDatabase))
             System.out.println("DB Initialized");
         else
@@ -52,6 +52,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         sqLiteDatabase.execSQL(UMQueries.UM_Query_TABLE01_DROP);
         sqLiteDatabase.execSQL(TMQueries.TM_Query_TABLE02_DROP);
+        sqLiteDatabase.execSQL(UMQueries.UM_Query_TABLE01_DROP);
         onCreate(sqLiteDatabase);
     }
 

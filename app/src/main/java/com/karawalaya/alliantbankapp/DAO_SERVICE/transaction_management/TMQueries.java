@@ -53,4 +53,5 @@ public class TMQueries {
     public static final String TM_Query_TABLE02_DROP = "DROP TABLE IF EXISTS " + TM_TABLE02 + ";";
 
     public static final String TM_Query_UM_FIND = "SELECT * FROM " + TM_TABLE01 + " c INNER JOIN " + TM_TABLE02 + " a ON c." + TM_TABLE01_COL01 + " = a." + TM_TABLE02_COL01 + " WHERE c." + TM_TABLE01_COL11 + "=? AND a." + TM_TABLE02_COL02 + "=?;";
+    public static final String TM_Query_GET_CUSTOMER = "SELECT * FROM " + TM_TABLE01 + " WHERE " + TM_TABLE01_COL01 + " =?;";
 }

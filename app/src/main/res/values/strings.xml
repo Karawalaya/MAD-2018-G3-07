@@ -21,21 +21,29 @@
     <string name="string_id_important_menu_option_01">Home</string>
 
 
-    <string name="hint_name">Name</string>
+    <!--
+        USER MANAGEMENT
+    -->
     <string name="hint_email">Email</string>
+    <string name="hint_account_no">Account No</string>
+    <string name="hint_username">Username</string>
     <string name="hint_password">Password</string>
     <string name="hint_confirm_password">Confirm Password</string>
-    <string name="text_login">Login</string>
-    <string name="text_register">Register</string>
-    <string name="error_message_name">Enter Full Name</string>
-    <string name="error_message_email">Enter Valid Email</string>
-    <string name="error_message_age">Enter Age</string>
-    <string name="error_message_password">Enter Password</string>
-    <string name="success_message">Registration Successful</string>
-    <string name="text_not_member">No account yet? Create one</string>
-    <string name="text_already_member">Already a member? Login</string>
-    <string name="error_email_exists">Email Already Exists</string>
-    <string name="error_password_match">Password Does Not Matches</string>
-    <string name="error_valid_email_password">Wrong Email or Password</string>
-    <string name="text_member">Already a member? Login</string>
+    <string name="btn_text_register">Register</string>
+    <string name="link_already_member">Already a member? Login</string>
+
+    <string name="btn_text_login">Login</string>
+    <string name="link_not_member">No account yet? Create one</string>
+
+    <string name="error_message_email_empty">Email cannot be empty!</string>
+    <string name="error_message_email_invalid">Email should be valid!</string>
+    <string name="error_message_account_no_empty">AccountNo cannot be empty!</string>
+    <string name="error_message_account_no_invalid">AccountNo should be numeric only!</string>
+    <string name="error_message_username_empty">Username cannot be empty!</string>
+    <string name="error_message_password_empty">Password cannot be empty!</string>
+    <string name="error_message_confirm_password_not_matching">Passwords do not match!</string>
+    <string name="error_message_no_physical_account">You have no physical account!</string>
+    <string name="error_message_already_a_online_user">You already have a online account!</string>
+    <string name="error_message_login_not_valid">Credentials are wrong!</string>
+    <string name="success_message_registered">You have successfully registered!</string>
 </resources>

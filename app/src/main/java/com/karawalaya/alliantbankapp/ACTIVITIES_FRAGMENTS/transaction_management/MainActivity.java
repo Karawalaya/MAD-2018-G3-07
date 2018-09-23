@@ -8,22 +8,30 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS.user_management.UpdateDetails;
+import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Customer;
 import com.karawalaya.alliantbankapp.R;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private Toolbar mainActionBar;
     private DrawerLayout mainDrawerLayout;
+    private HomePage homePage;
+    private AccountInformation accountInformation;
+    private UpdateDetails updateDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e("Kara", "onCreate MainActivity");
         setContentView(R.layout.activity_main);
+
+        Customer customer = (Customer) getIntent().getSerializableExtra("customer");
 
         //Action bar is set
         mainActionBar = findViewById(R.id.main_action_bar);
@@ -39,12 +47,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mainDrawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
+        homePage = new HomePage();
+        accountInformation = new AccountInformation();
+        updateDetails = new UpdateDetails();
+
         if(savedInstanceState == null) {
             /*FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.add(R.id.fragment_container, new HomePage());
             transaction.addToBackStack(null);
             transaction.commit();*/
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomePage()).addToBackStack("Home").commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, homePage).addToBackStack("Home").commit();
             getSupportActionBar().setSubtitle("HomePage");
             /*FragmentManager fragManager = getSupportFragmentManager();
             FragmentTransaction fragTransact = fragManager.beginTransaction();
@@ -68,19 +80,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch(menuItem.getItemId()) {
             case R.id.important_menu_option_01:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomePage()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, homePage, "Homepage").commit();
                 getSupportActionBar().setSubtitle("HomePage");
                 break;
 
             case R.id.nav_drawer_menu_id_option_01:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AccountInformation()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, accountInformation, "AccountInformation").commit();
                 getSupportActionBar().setSubtitle("Account Information");
                 menuItem.setCheckable(true);
 //                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 break;
 
             case R.id.nav_drawer_menu_id_option_02:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new UpdateDetails()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, updateDetails, "UpdateDetails").commit();
                 getSupportActionBar().setSubtitle("Update Details");
                 menuItem.setCheckable(true);
 //                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -142,5 +154,53 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         onNavigationItemSelected(item);
         return true;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e("Kara", "onStart MainActivity");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("Kara", "onResume MainActivity");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.e("Kara", "onRestart MainActivity");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e("Kara", "onPause MainActivity");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e("Kara", "onStop MainActivity");
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.e("Kara", "onSaveInstanceState MainActivity");
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.e("Kara", "onRestoreInstanceState MainActivity");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e("Kara", "onDestroy MainActivity");
     }
 }

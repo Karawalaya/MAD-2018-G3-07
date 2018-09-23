@@ -1,6 +1,10 @@
 package com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management;
 
-public class Customer {
+import com.karawalaya.alliantbankapp.POJO_MODEL.user_management.OnlineUser;
+
+import java.io.Serializable;
+
+public class Customer implements Serializable {
     private String customerId;
     private String firstName;
     private String lastName;
@@ -12,6 +16,9 @@ public class Customer {
     private int addressZip;
     private String contactNumber;
     private String email;
+
+    private Account account;
+    private OnlineUser onlineUser;
 
     public Customer() {}
 
@@ -116,5 +123,21 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public OnlineUser getOnlineUser() {
+        return onlineUser;
+    }
+
+    public void setOnlineUser(OnlineUser onlineUser) {
+        this.onlineUser = onlineUser;
     }
 }

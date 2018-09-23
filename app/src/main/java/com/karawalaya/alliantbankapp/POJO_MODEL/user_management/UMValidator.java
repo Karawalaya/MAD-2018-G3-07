@@ -41,9 +41,18 @@ public class UMValidator {
         return true;
     }
 
+    public boolean isNumbericOnly(TextInputEditText textInputEditText, TextInputLayout textInputLayout, String message) {
+        try{
+            int number = Integer.parseInt(textInputEditText.getText().toString());
+        } catch(NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+
     public boolean isInputEditTextMatches(TextInputEditText textInputEditText1, TextInputEditText textInputEditText2, TextInputLayout textInputLayout, String message) {
         String value1 = textInputEditText1.getText().toString().trim();
-        String value2 = textInputEditText1.getText().toString().trim();
+        String value2 = textInputEditText2.getText().toString().trim();
 
         if(!value1.contentEquals(value2)) {
             textInputLayout.setError(message);

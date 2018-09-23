@@ -10,19 +10,22 @@ import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
+import android.widget.Toast;
 
+import com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS.transaction_management.HomePage;
 import com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS.transaction_management.MainActivity;
 import com.karawalaya.alliantbankapp.DAO_SERVICE.user_management.UserManagementDAO;
+import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Customer;
 import com.karawalaya.alliantbankapp.POJO_MODEL.user_management.UMValidator;
 import com.karawalaya.alliantbankapp.R;
 
-public class Login extends AppCompatActivity implements View.OnClickListener {asd
+public class Login extends AppCompatActivity implements View.OnClickListener {
     private NestedScrollView nestedScrollView;
 
-    private TextInputLayout textInputLayoutEmail;
+    private TextInputLayout textInputLayoutUserName;
     private TextInputLayout textInputLayoutPassword;
 
-    private TextInputEditText textInputEditTextEmail;
+    private TextInputEditText textInputEditTextUserName;
     private TextInputEditText textInputEditTextPassword;
 
     private AppCompatButton appCompatButtonLogin;
@@ -63,10 +66,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {as
     private void initViews() {
         nestedScrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
 
-        textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
+        textInputLayoutUserName = (TextInputLayout) findViewById(R.id.textInputLayoutUserName);
         textInputLayoutPassword = (TextInputLayout) findViewById(R.id.textInputLayoutPassword);
 
-        textInputEditTextEmail = (TextInputEditText) findViewById(R.id.textInputEditTextEmail);
+        textInputEditTextUserName = (TextInputEditText) findViewById(R.id.textInputEditTextUserName);
         textInputEditTextPassword = (TextInputEditText) findViewById(R.id.textInputEditTextPassword);
 
         appCompatButtonLogin = (AppCompatButton) findViewById(R.id.appCompatButtonLogin);
@@ -118,29 +121,29 @@ public class Login extends AppCompatActivity implements View.OnClickListener {as
     }
 
     private void verifyFromSQLite() {
-        if (!umv.isInputEditTextFilled(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
+        if (!umv.isInputEditTextFilled(textInputEditTextUserName, textInputLayoutUserName, getString(R.string.error_message_username_empty))) {
             return;
         }
-        if (!umv.isInputEditTextEmail(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
-            return;
-        }
-        if (!umv.isInputEditTextFilled(textInputEditTextPassword, textInputLayoutPassword, getString(R.string.error_valid_email_password))) {
+        if (!umv.isInputEditTextFilled(textInputEditTextPassword, textInputLayoutPassword, getString(R.string.error_message_password_empty))) {
             return;
         }
 
-        if (umdao.checkUser(textInputEditTextEmail.getText().toString().trim()
-                , textInputEditTextPassword.getText().toString().trim())) {
-            Intent accountsIntent = new Intent(this, MainActivity.class);
-            accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
+        Customer customer = umdao.login(textInputEditTextUserName.getText().toString(), textInputEditTextPassword.getText().toString());
+
+        if(customer != null) {
+            //Toast.makeText(this, "Welcome back, " + customer.getOnlineUser().getUserName() + "!", Toast.LENGTH_LONG).show();
             emptyInputEditText();
-            startActivity(accountsIntent);
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("customer", customer);
+            startActivity(intent);
         } else {
-            Snackbar.make(nestedScrollView, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.error_message_login_not_valid), Toast.LENGTH_LONG).show();
+            emptyInputEditText();
         }
     }
 
     private void emptyInputEditText() {
-        textInputEditTextEmail.setText(null);
+        textInputEditTextUserName.setText(null);
         textInputEditTextPassword.setText(null);
     }
 }

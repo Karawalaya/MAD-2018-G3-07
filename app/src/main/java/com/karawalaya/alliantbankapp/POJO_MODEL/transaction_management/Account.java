@@ -1,6 +1,8 @@
 package com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management;
 
-public class Account {
+import java.io.Serializable;
+
+public class Account implements Serializable {
     private String customerId;
     private int accountNo;
     private double balance;
