@@ -64,14 +64,24 @@ public class DBHelper extends SQLiteOpenHelper{
             Collection<Populate> populateList = new ArrayList<Populate>();
 
             Populate pop01 = new Populate();
-            pop01.setCustomer(new Customer("CUST000001", "Isuru", "Qwerty", 22, "Male", "12/2 Abcdefg Road", "Hijklmn", "Western", 10001, "0771234567", "isuruqwerty@gmail.com"));
-            pop01.setAccount(new Account("CUST000001", 123456789, "Savings", 100000.23));
+            pop01.setCustomer(new Customer("CUST000001", "Isuru", "Samarasekara", 22, "Male", "78/78 Abc Road", "Qwe", "Western", 10001, "0770123456", "isuru@gmail.com"));
+            pop01.setAccount(new Account("CUST000001", 123456789, "Savings", 150000.23));
             populateList.add(pop01);
 
             Populate pop02 = new Populate();
-            pop02.setCustomer(new Customer("CUST000002", "Keshi", "Uiop", 22, "Female", "16/6 Nopqrst Road", "uvwxyza", "Western", 10002, "0774567891", "keshiuiop@gmail.com"));
-            pop02.setAccount(new Account("CUST000002", 456789123, "Savings", 200045.48));
+            pop02.setCustomer(new Customer("CUST000002", "Keshani", "Bogahawatte", 22, "Female", "79/79 Def Road", "Asd", "Western", 10002, "0770456789", "keshani@gmail.com"));
+            pop02.setAccount(new Account("CUST000002", 456789123, "Savings", 160000.24));
             populateList.add(pop02);
+
+            Populate pop03 = new Populate();
+            pop03.setCustomer(new Customer("CUST000003", "Chathurka", "Vishmantha", 21, "Male", "80/80 Ghi Road", "Zxc", "Western", 10003, "0770789123", "chathurka@gmail.com"));
+            pop03.setAccount(new Account("CUST000003", 789123456, "Savings", 140000.25));
+            populateList.add(pop03);
+
+            Populate pop04 = new Populate();
+            pop04.setCustomer(new Customer("CUST000004", "Madhawa", "Subasinghe", 22, "Male", "81/81 Jkl Road", "Vbn", "Western", 10004, "0770147258", "madhawa@gmail.com"));
+            pop04.setAccount(new Account("CUST000004", 147258369, "Savings", 130000.26));
+            populateList.add(pop04);
 
             for(Populate pop: populateList) {
                 SQLiteStatement st01 = null;

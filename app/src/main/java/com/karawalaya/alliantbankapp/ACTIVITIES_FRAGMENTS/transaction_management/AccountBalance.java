@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.karawalaya.alliantbankapp.DAO_SERVICE.transaction_management.TransactionManagementDAO;
+import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Account;
 import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Customer;
 import com.karawalaya.alliantbankapp.R;
 
@@ -66,13 +67,13 @@ public class AccountBalance extends Fragment {
 
         if(getArguments() != null) {
             customer = (Customer) getArguments().getSerializable(CUST_VAR_ACCOUNT_BALANCE);
-            customer = tmdao.getAccountDetails(customer);
+            Account account = tmdao.getAccountDetails(customer);
 
-            if(customer.getAccount() != null) {
+            if(account != null) {
                 Account_Balance_TV01.setText(customer.getFirstName() + " " + customer.getLastName());
 //                Account_Balance_TV02.setText(customer.getOnlineUser().getUserName());
-                Account_Balance_TV03.setText(customer.getAccount().getAccountType());
-                Account_Balance_TV04.setText(Double.toString(customer.getAccount().getBalance()));
+                Account_Balance_TV03.setText(account.getAccountType());
+                Account_Balance_TV04.setText(Double.toString(account.getBalance()));
             } else {
 
             }

@@ -169,8 +169,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_drawer_menu_id_option_05:
                 Toast.makeText(this, "Make a Transaction", Toast.LENGTH_LONG).show();
 
-                /*makeATransaction = MakeATransaction.getInstance(customer);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, transactionHistory, "TransactionHistory").commit();*/
+                makeATransaction = MakeATransaction.getInstance(customer);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, makeATransaction, "MakeATransaction").commit();
                 getSupportActionBar().setSubtitle("Make a Transaction");
                 menuItem.setCheckable(true);
                 break;

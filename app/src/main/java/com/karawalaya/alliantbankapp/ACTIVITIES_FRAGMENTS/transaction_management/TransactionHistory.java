@@ -10,11 +10,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.karawalaya.alliantbankapp.DAO_SERVICE.transaction_management.TransactionManagementDAO;
+import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Account;
 import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Customer;
+import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Transaction;
 import com.karawalaya.alliantbankapp.R;
+
+import org.w3c.dom.Text;
+
+import java.util.Collection;
 
 public class TransactionHistory extends Fragment {
     //Bundle Arguments.
@@ -25,11 +33,32 @@ public class TransactionHistory extends Fragment {
     private TransactionManagementDAO tmdao;
 
     //Views.
-    private TextView Account_Balance_TV01;
-    private TextView Account_Balance_TV02;
-    private TextView Account_Balance_TV03;
-    private TextView Account_Balance_TV04;
+    private TableLayout Transaction_History_Table_Layout;
 
+    private TextView Transaction_History_Table_Row02_Col01;
+    private TextView Transaction_History_Table_Row02_Col02;
+    private TextView Transaction_History_Table_Row02_Col03;
+    private TextView Transaction_History_Table_Row02_Col04;
+
+    private TextView Transaction_History_Table_Row03_Col01;
+    private TextView Transaction_History_Table_Row03_Col02;
+    private TextView Transaction_History_Table_Row03_Col03;
+    private TextView Transaction_History_Table_Row03_Col04;
+
+    private TextView Transaction_History_Table_Row04_Col01;
+    private TextView Transaction_History_Table_Row04_Col02;
+    private TextView Transaction_History_Table_Row04_Col03;
+    private TextView Transaction_History_Table_Row04_Col04;
+
+    private TextView Transaction_History_Table_Row05_Col01;
+    private TextView Transaction_History_Table_Row05_Col02;
+    private TextView Transaction_History_Table_Row05_Col03;
+    private TextView Transaction_History_Table_Row05_Col04;
+
+    private TextView Transaction_History_Table_Row06_Col01;
+    private TextView Transaction_History_Table_Row06_Col02;
+    private TextView Transaction_History_Table_Row06_Col03;
+    private TextView Transaction_History_Table_Row06_Col04;
     /**
      * This was used to create a communication between the MainActivity and this fragment.
      */
@@ -66,13 +95,35 @@ public class TransactionHistory extends Fragment {
 
         if(getArguments() != null) {
             customer = (Customer) getArguments().getSerializable(CUST_VAR_TRANSACTION_HISTORY);
-            customer = tmdao.getAccountDetails(customer);
+            Account account = tmdao.getAccountDetails(customer);
 
-            if(customer.getAccount() != null) {
-                Account_Balance_TV01.setText(customer.getFirstName() + " " + customer.getLastName());
-//                Account_Balance_TV02.setText(customer.getOnlineUser().getUserName());
-                Account_Balance_TV03.setText(customer.getAccount().getAccountType());
-                Account_Balance_TV04.setText(Double.toString(customer.getAccount().getBalance()));
+            if(account != null) {
+                Collection<Transaction> transactionList = tmdao.getTransactionHistory(account.getAccountNo());
+                if(transactionList != null) {
+                    int[] textViews = {R.id.Transaction_History_Table_Row02_Col01, R.id.Transaction_History_Table_Row02_Col02, R.id.Transaction_History_Table_Row02_Col03, R.id.Transaction_History_Table_Row02_Col04,
+                            R.id.Transaction_History_Table_Row03_Col01, R.id.Transaction_History_Table_Row03_Col02, R.id.Transaction_History_Table_Row03_Col03, R.id.Transaction_History_Table_Row03_Col04,
+                            R.id.Transaction_History_Table_Row04_Col01, R.id.Transaction_History_Table_Row04_Col02, R.id.Transaction_History_Table_Row04_Col03, R.id.Transaction_History_Table_Row04_Col04,
+                            R.id.Transaction_History_Table_Row05_Col01, R.id.Transaction_History_Table_Row05_Col02, R.id.Transaction_History_Table_Row05_Col03, R.id.Transaction_History_Table_Row05_Col04,
+                            R.id.Transaction_History_Table_Row06_Col01, R.id.Transaction_History_Table_Row06_Col02, R.id.Transaction_History_Table_Row06_Col03, R.id.Transaction_History_Table_Row06_Col04,};
+
+                    int i = 0;
+                    for(Transaction transaction: transactionList) {
+                        TextView tv01 = (TextView) fragTransactionHistoryView.findViewById(textViews[i]);
+                        tv01.setText(Integer.toString(transaction.getCreditAccount()));
+                        i++;
+                        TextView tv02 = (TextView) fragTransactionHistoryView.findViewById(textViews[i]);
+                        tv02.setText(transaction.getTransactionDate().toString());
+                        i++;
+                        TextView tv03 = (TextView) fragTransactionHistoryView.findViewById(textViews[i]);
+                        tv03.setText(Double.toString(transaction.getTransactionAmount()));
+                        i++;
+                        TextView tv04 = (TextView) fragTransactionHistoryView.findViewById(textViews[i]);
+                        tv04.setText(Integer.toString(transaction.getDebitAccount()));
+                        i++;
+                    }
+                } else {
+                    Transaction_History_Table_Layout.setVisibility(View.INVISIBLE);
+                }
             } else {
 
             }
@@ -86,10 +137,11 @@ public class TransactionHistory extends Fragment {
     }
 
     private void initializeViews(View fragTransactionHistoryView) {
-/*        Account_Balance_TV01 = fragHomepageView.findViewById(R.id.Account_Balance_TV01);
-        Account_Balance_TV02 = fragHomepageView.findViewById(R.id.Account_Balance_TV02);
-        Account_Balance_TV03 = fragHomepageView.findViewById(R.id.Account_Balance_TV03);
-        Account_Balance_TV04 = fragHomepageView.findViewById(R.id.Account_Balance_TV04);*/
+        Transaction_History_Table_Layout = fragTransactionHistoryView.findViewById(R.id.Transaction_History_Table_Layout);
+
+//        Transaction_History_Table_Row02_Col01 = fragTransactionHistoryView.findViewById(R.id.Transaction_History_Table_Row02_Col01);
+
+
     }
 
     @Override

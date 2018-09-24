@@ -35,6 +35,19 @@
     <string name="string_id_transaction_history_tv_table_head03">Amount</string>
     <string name="string_id_transaction_history_tv_table_head04">Debit Account</string>
 
+    <string name="string_id_make_a_transaction_tv01">Your Account Details</string>
+    <string name="string_id_make_a_transaction_tv02">Full Name </string>
+    <string name="string_id_make_a_transaction_tv03">Credit Account : </string>
+    <string name="string_id_make_a_transaction_tv04">Account Number</string>
+    <string name="string_id_make_a_transaction_tv05">Account Balance (Rs.) : </string>
+    <string name="string_id_make_a_transaction_tv06">xxx.xx</string>
+    <string name="string_id_make_a_transaction_tv07">Debit Account Details</string>
+    <string name="string_id_make_a_transaction_tv08">Debit Account No : </string>
+    <string name="string_id_make_a_transaction_tv09">Account Number</string>
+    <string name="string_id_make_a_transaction_tv10">Transfer Amount : </string>
+    <string name="string_id_make_a_transaction_tv11">xxx.xx</string>
+    <string name="string_id_make_a_transaction_tv12">TRANSFER</string>
+
     <!--
         USER MANAGEMENT
     -->
