@@ -78,4 +78,7 @@ public class TMQueries {
     public static final String TM_Query_TABLE03_INSERT = "INSERT INTO " + TM_TABLE03 + "(" + TM_TABLE03_COL02 + ", " + TM_TABLE03_COL03 + ", " + TM_TABLE03_COL04 + ", " + TM_TABLE03_COL05 + ") VALUES (?, ?, ?, ?);";
     public static final String TM_Query_TABLE03_DROP = "DROP TABLE IF EXISTS " + TM_TABLE03 + ";";
     public static final String TM_Query_TABLE03_SELECT_SPECIFICS = "SELECT * FROM " + TM_TABLE03 + " WHERE " + TM_TABLE03_COL02 + " =?;";
+
+    public static final String TM_Query_TM_TABLE03_SELECT_SEARCH = "SELECT * FROM " + TM_TABLE03 + " WHERE " + TM_TABLE03_COL02 + " =? AND " + TM_TABLE03_COL05 + " =?;";
+    public static final String TM_Query_TM_TABLE03_SELECT_SEARCH_USING_TRAN_ID = "SELECT * FROM " + TM_TABLE03 + " WHERE " + TM_TABLE03_COL01 + " =?;";
 }

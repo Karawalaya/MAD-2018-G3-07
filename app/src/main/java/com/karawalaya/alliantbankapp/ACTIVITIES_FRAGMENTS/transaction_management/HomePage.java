@@ -1,6 +1,7 @@
 package com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS.transaction_management;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,8 +11,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS.user_management.Login;
 import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Customer;
 import com.karawalaya.alliantbankapp.R;
 
@@ -24,6 +27,7 @@ public class HomePage extends Fragment {
 
     //Views.
     private TextView textView;
+    private Button home_page_btn_logout;
 
     /**
      * This was used to create a communication between the MainActivity and this fragment.
@@ -70,12 +74,28 @@ public class HomePage extends Fragment {
      */
     public void initializeViews(View fragHomepageView) {
         textView = fragHomepageView.findViewById(R.id.textView);
+        home_page_btn_logout = fragHomepageView.findViewById(R.id.home_page_btn_logout);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         Log.i("Kara", "FRAGMENT =========================== HomePage =========================== onActivityCreated ===========================");
         super.onActivityCreated(savedInstanceState);
+
+        logout();
+    }
+
+    public void logout() {
+        home_page_btn_logout.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getActivity(), Login.class);
+                        startActivity(intent);
+                        getActivity().finish();
+                    }
+                }
+        );
     }
 
     @Override

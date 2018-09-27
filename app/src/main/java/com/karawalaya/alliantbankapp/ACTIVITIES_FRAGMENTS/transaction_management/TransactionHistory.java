@@ -1,5 +1,6 @@
 package com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS.transaction_management;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -123,6 +124,13 @@ public class TransactionHistory extends Fragment {
                     }
                 } else {
                     Transaction_History_Table_Layout.setVisibility(View.INVISIBLE);
+
+                    AlertDialog.Builder alertNoTransactionHistory = new AlertDialog.Builder(getActivity());
+                    alertNoTransactionHistory.setMessage("There are no transactions to show as of now!")
+                            .setCancelable(true);
+                    AlertDialog alert = alertNoTransactionHistory.create();
+                    alert.setTitle("Transaction History");
+                    alert.show();
                 }
             } else {
 

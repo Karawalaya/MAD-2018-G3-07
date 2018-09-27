@@ -27,7 +27,6 @@ public class AccountBalance extends Fragment {
 
     //Views.
     private TextView Account_Balance_TV01;
-    private TextView Account_Balance_TV02;
     private TextView Account_Balance_TV03;
     private TextView Account_Balance_TV04;
 
@@ -71,7 +70,6 @@ public class AccountBalance extends Fragment {
 
             if(account != null) {
                 Account_Balance_TV01.setText(customer.getFirstName() + " " + customer.getLastName());
-//                Account_Balance_TV02.setText(customer.getOnlineUser().getUserName());
                 Account_Balance_TV03.setText(account.getAccountType());
                 Account_Balance_TV04.setText(Double.toString(account.getBalance()));
             } else {
@@ -88,7 +86,6 @@ public class AccountBalance extends Fragment {
 
     private void initializeViews(View fragHomepageView) {
         Account_Balance_TV01 = fragHomepageView.findViewById(R.id.Account_Balance_TV01);
-        Account_Balance_TV02 = fragHomepageView.findViewById(R.id.Account_Balance_TV02);
         Account_Balance_TV03 = fragHomepageView.findViewById(R.id.Account_Balance_TV03);
         Account_Balance_TV04 = fragHomepageView.findViewById(R.id.Account_Balance_TV04);
     }

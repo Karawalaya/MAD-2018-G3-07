@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_transaction_01_02"
     tools:context=".ACTIVITIES_FRAGMENTS.transaction_management.TransactionHistory">
 
     <android.support.constraint.ConstraintLayout
@@ -49,7 +50,7 @@
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Head01"
-                    android:layout_width="100sp"
+                    android:layout_width="85sp"
                     android:layout_height="30sp"
                     android:gravity="center"
                     android:text="@string/string_id_transaction_history_tv_table_head01"
@@ -58,7 +59,7 @@
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Head02"
-                    android:layout_width="75sp"
+                    android:layout_width="85sp"
                     android:layout_height="30sp"
                     android:gravity="center"
                     android:text="@string/string_id_transaction_history_tv_table_head02"
@@ -67,7 +68,7 @@
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Head03"
-                    android:layout_width="75sp"
+                    android:layout_width="85sp"
                     android:layout_height="30sp"
                     android:gravity="center"
                     android:text="@string/string_id_transaction_history_tv_table_head03"
@@ -76,7 +77,7 @@
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Head04"
-                    android:layout_width="100sp"
+                    android:layout_width="85sp"
                     android:layout_height="30sp"
                     android:gravity="center"
                     android:text="@string/string_id_transaction_history_tv_table_head04"
@@ -95,29 +96,33 @@
                     android:id="@+id/Transaction_History_Table_Row02_Col01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left" />
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Row02_Col02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Row02_Col03"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Row02_Col04"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
             </TableRow>
 
             <TableRow
@@ -130,29 +135,33 @@
                     android:id="@+id/Transaction_History_Table_Row03_Col01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Row03_Col02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Row03_Col03"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Row03_Col04"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
             </TableRow>
 
@@ -166,29 +175,33 @@
                     android:id="@+id/Transaction_History_Table_Row04_Col01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Row04_Col02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Row04_Col03"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Row04_Col04"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
             </TableRow>
 
@@ -202,29 +215,33 @@
                     android:id="@+id/Transaction_History_Table_Row05_Col01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Row05_Col02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Row05_Col03"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Row05_Col04"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
             </TableRow>
 
@@ -238,29 +255,33 @@
                     android:id="@+id/Transaction_History_Table_Row06_Col01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Row06_Col02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Row06_Col03"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Transaction_History_Table_Row06_Col04"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
 
             </TableRow>
         </TableLayout>

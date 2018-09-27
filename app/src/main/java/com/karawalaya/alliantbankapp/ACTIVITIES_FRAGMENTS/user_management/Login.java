@@ -136,6 +136,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("customer", customer);
             startActivity(intent);
+            finish();
         } else {
             Toast.makeText(this, getString(R.string.error_message_login_not_valid), Toast.LENGTH_LONG).show();
             emptyInputEditText();

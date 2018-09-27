@@ -75,7 +75,10 @@ import android.util.Log;
 
 import com.karawalaya.alliantbankapp.DAO_SERVICE.DBHelper;
 import com.karawalaya.alliantbankapp.DAO_SERVICE.transaction_management.TMQueries;
+import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Account;
 import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Customer;
+import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.DateConverter;
+import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Transaction;
 import com.karawalaya.alliantbankapp.POJO_MODEL.user_management.OnlineUser;
 
 public class UserManagementDAO {
@@ -161,7 +164,7 @@ public class UserManagementDAO {
         return false;
     }*/
 
-    public boolean alreadyAOnlineUser(String customerId) {
+    public boolean alreadyAnOnlineUser(String customerId) {
         boolean bool = false;
         SQLiteDatabase sqLiteDatabase = dbhelper.getWritableDatabase();
         String[] selectionArgs = {customerId};
@@ -189,7 +192,7 @@ public class UserManagementDAO {
                     onlineUser.setCustomerId(cursor01.getString(0));
                     onlineUser.setOnlineUserId(cursor01.getInt(1));
                     onlineUser.setUserName(cursor01.getString(2));
-                    //For security resons... password is not set!
+                    //For security reasons... password is not set!
 
                     break;
                 }
@@ -200,11 +203,11 @@ public class UserManagementDAO {
              */
             if(onlineUser != null) {
                 String[] selectionArgs02 = {onlineUser.getCustomerId()};
-                Cursor cursor02 = sqLiteDatabase.rawQuery(TMQueries.TM_Query_GET_CUSTOMER, selectionArgs02);
-                if(cursor02.getCount() > 0) {
-                    cursor02.moveToNext();
-                    customer = new Customer(cursor02.getString(0), cursor02.getString(1), cursor02.getString(2), cursor02.getInt(3), cursor02.getString(4),
-                            cursor02.getString(5), cursor02.getString(6), cursor02.getString(7), cursor02.getInt(8), cursor02.getString(9), cursor02.getString(10));
+                    Cursor cursor02 = sqLiteDatabase.rawQuery(TMQueries.TM_Query_GET_CUSTOMER, selectionArgs02);
+                    if(cursor02.getCount() > 0) {
+                        cursor02.moveToNext();
+                        customer = new Customer(cursor02.getString(0), cursor02.getString(1), cursor02.getString(2), cursor02.getInt(3), cursor02.getString(4),
+                                cursor02.getString(5), cursor02.getString(6), cursor02.getString(7), cursor02.getInt(8), cursor02.getString(9), cursor02.getString(10));
                     customer.setOnlineUser(onlineUser);
                 }
             }
@@ -212,7 +215,27 @@ public class UserManagementDAO {
              * @Author Samarasekara S.A.M.I.D.
              */
         }
+        sqLiteDatabase.close();
 
         return customer;
+    }
+
+    public Transaction getTransactionOnId(int TransactionId, Account account) {
+        SQLiteDatabase sqLiteDatabase = dbhelper.getWritableDatabase();
+        String[] selectionArgs = {Integer.toString(TransactionId)};
+        Transaction transaction = null;
+        Cursor cursor = sqLiteDatabase.rawQuery(UMQueries.UM_Query_SEARCH_TRANSACTION_ON_ID, selectionArgs);
+
+        if(cursor.getCount() > 0) {
+            cursor.moveToNext();
+            transaction = new Transaction(cursor.getInt(0), cursor.getInt(1), DateConverter.getSqlDateFromString(cursor.getString(2)), cursor.getDouble(3), cursor.getInt(4));
+        }
+
+        if(transaction != null) {
+            if(transaction.getCreditAccount() != account.getAccountNo())
+                transaction = null;
+        }
+
+        return transaction;
     }
 }

@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private AccountBalance accountBalance;
     private TransactionHistory transactionHistory;
     private MakeATransaction makeATransaction;
+    private SearchTransactions searchTransactions;
+    private RemoveATransaction removeATransaction;
 
     //User_Management
     private AccountInformation accountInformation;
@@ -82,9 +84,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mainDrawerLayout, mainActionBar, R.string.string_id_navigation_drawer_open, R.string.string_id_navigation_drawer_close);
         mainDrawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
-
-        accountInformation = new AccountInformation();
-        updateDetails = new UpdateDetails();
 
         /**
          * Here, If there is no saved instance of the MainActivity, (Basically if the activity is destroyed or opening for the first time),
@@ -148,30 +147,48 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_drawer_menu_id_option_03:
-                Toast.makeText(this, "Account Balance", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, R.string.string_id_navigation_menu_option_03, Toast.LENGTH_LONG).show();
 
                 accountBalance = AccountBalance.getInstance(customer);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, accountBalance, "AccountBalance").commit();
-                getSupportActionBar().setSubtitle("Account Balance");
+                getSupportActionBar().setSubtitle(R.string.string_id_navigation_menu_option_03);
                 menuItem.setCheckable(true);
 
                 break;
 
             case R.id.nav_drawer_menu_id_option_04:
-                Toast.makeText(this, "Transaction History", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, R.string.string_id_navigation_menu_option_04, Toast.LENGTH_LONG).show();
 
                 transactionHistory = TransactionHistory.getInstance(customer);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, transactionHistory, "TransactionHistory").commit();
-                getSupportActionBar().setSubtitle("Transaction History");
+                getSupportActionBar().setSubtitle(R.string.string_id_navigation_menu_option_04);
                 menuItem.setCheckable(true);
                 break;
 
             case R.id.nav_drawer_menu_id_option_05:
-                Toast.makeText(this, "Make a Transaction", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, R.string.string_id_navigation_menu_option_05, Toast.LENGTH_LONG).show();
 
                 makeATransaction = MakeATransaction.getInstance(customer);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, makeATransaction, "MakeATransaction").commit();
-                getSupportActionBar().setSubtitle("Make a Transaction");
+                getSupportActionBar().setSubtitle(R.string.string_id_navigation_menu_option_05);
+                menuItem.setCheckable(true);
+                break;
+
+            case R.id.nav_drawer_menu_id_option_05_01:
+                Toast.makeText(this, R.string.string_id_navigation_menu_option_05_01, Toast.LENGTH_LONG).show();
+
+                searchTransactions = SearchTransactions.getInstance(customer);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, searchTransactions, "SearchTransactions").commit();
+                getSupportActionBar().setSubtitle(R.string.string_id_navigation_menu_option_05_01);
+                menuItem.setCheckable(true);
+                break;
+
+            case R.id.nav_drawer_menu_id_option_05_02:
+                Toast.makeText(this, R.string.string_id_navigation_menu_option_05_02, Toast.LENGTH_LONG).show();
+
+                removeATransaction = RemoveATransaction.getInstance(customer);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, removeATransaction, "RemoveTransaction").commit();
+                getSupportActionBar().setSubtitle(R.string.string_id_navigation_menu_option_05_02);
                 menuItem.setCheckable(true);
                 break;
 

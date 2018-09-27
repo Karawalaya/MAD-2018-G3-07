@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.karawalaya.alliantbankapp.DAO_SERVICE.transaction_management.TransactionManagementDAO;
 import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Account;
 import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Customer;
+import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.ErrorGives;
+import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.TMValidator;
 import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Transaction;
 import com.karawalaya.alliantbankapp.R;
 
@@ -32,6 +34,7 @@ public class MakeATransaction extends Fragment implements View.OnClickListener {
     private Customer customer = null;
     Account account = null;
     private TransactionManagementDAO tmdao;
+    private TMValidator tmv;
 
     //Views.
     private TextView make_a_transaction_TV02;
@@ -95,6 +98,7 @@ public class MakeATransaction extends Fragment implements View.OnClickListener {
 
     private void initializeObjects() {
         tmdao = new TransactionManagementDAO(getActivity());
+        tmv = new TMValidator(getActivity());
     }
 
     private void initializeViews(View fragMakeATransactionView) {
@@ -111,6 +115,54 @@ public class MakeATransaction extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         Log.e("Kara", "Debit Account = " + make_a_transaction_ET01.getText().toString());
         Log.e("Kara", "Transfer Amount = " + make_a_transaction_ET02.getText().toString());
+
+        ErrorGives eg = new ErrorGives(getActivity());
+
+        if(!tmv.isFieldFilled(make_a_transaction_ET01)) {
+            make_a_transaction_ET01.setError(eg.getFieldError(getString(R.string.string_id_error_field_cannot_be_empty)));
+            emptyInputEditText();
+            return;
+        }
+
+        if(!tmv.isNumericOnly(make_a_transaction_ET01)) {
+            make_a_transaction_ET01.setError(eg.getFieldError(getString(R.string.string_id_error_field_should_only_contain_numeric)));
+            emptyInputEditText();
+            return;
+        }
+
+        if(!tmv.isNineDigit(make_a_transaction_ET01)) {
+            make_a_transaction_ET01.setError(eg.getFieldError(getString(R.string.string_id_error_field_should_be_nine_digit)));
+            return;
+        }
+
+        if(Integer.parseInt(make_a_transaction_ET01.getText().toString().trim()) == account.getAccountNo()) {
+            make_a_transaction_ET01.setError(eg.getFieldError(getString(R.string.string_id_error_credit_and_debit_cannot_be_the_same)));
+            emptyInputEditText();
+            return;
+        }
+
+        if(!tmv.isFieldFilled(make_a_transaction_ET02)) {
+            make_a_transaction_ET02.setError(eg.getFieldError(getString(R.string.string_id_error_field_cannot_be_empty)));
+            return;
+        }
+
+        if(!tmv.isDoubleOnly(make_a_transaction_ET02)) {
+            make_a_transaction_ET02.setError(eg.getFieldError(getString(R.string.string_id_error_field_should_only_contain_double)));
+            make_a_transaction_ET02.setText(null);
+            return;
+        }
+
+        if(!tmv.isPositiveValue(make_a_transaction_ET02)) {
+            make_a_transaction_ET02.setError(eg.getFieldError(getString(R.string.string_id_error_field_should_be_positive)));
+            make_a_transaction_ET02.setText(null);
+            return;
+        }
+
+        if(Double.parseDouble(make_a_transaction_ET02.getText().toString().trim()) >= account.getBalance()) {
+            make_a_transaction_ET02.setError(eg.getFieldError(getString(R.string.string_id_error_transfer_invalid)));
+            make_a_transaction_ET02.setText(null);
+            return;
+        }
 
         int debitAccount = Integer.parseInt(make_a_transaction_ET01.getText().toString());
         double transferAmount = Double.parseDouble(make_a_transaction_ET02.getText().toString());

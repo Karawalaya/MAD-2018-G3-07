@@ -8,6 +8,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 public class UMValidator {
     private Context context;
@@ -41,7 +42,7 @@ public class UMValidator {
         return true;
     }
 
-    public boolean isNumbericOnly(TextInputEditText textInputEditText, TextInputLayout textInputLayout, String message) {
+    public boolean isNumericOnly(TextInputEditText textInputEditText, TextInputLayout textInputLayout, String message) {
         try{
             int number = Integer.parseInt(textInputEditText.getText().toString());
         } catch(NumberFormatException e) {
@@ -67,5 +68,32 @@ public class UMValidator {
     private void hideKeyboardFrom(View view) {
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getApplicationWindowToken(), WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
+
+    public boolean filled(EditText editText) {
+        String val = editText.getText().toString().trim();
+        if(val.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean integer(EditText editText) {
+        try {
+            Integer.parseInt(editText.getText().toString().trim());
+        } catch(NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean notNegativeOrZero(EditText editText) {
+        int var = Integer.parseInt(editText.getText().toString().trim());
+
+        if(var <= 0)
+            return false;
+        else
+            return true;
     }
 }

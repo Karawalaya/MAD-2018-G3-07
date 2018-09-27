@@ -29,7 +29,7 @@
             android:fontFamily="@string/font_family_thin"
             android:text="@string/string_id_splash_welcome"
             android:textColor="@color/colorSplash"
-            android:textSize="30sp"
+            android:textSize="50sp"
             android:textStyle="bold"
             app:fontFamily="@font/bilbo_swash_caps"
             android:alpha=".65"/>

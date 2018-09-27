@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import com.karawalaya.alliantbankapp.DAO_SERVICE.DBHelper;
+import com.karawalaya.alliantbankapp.DAO_SERVICE.user_management.UMQueries;
 import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Account;
 import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Customer;
 import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.DateConverter;
@@ -117,7 +118,56 @@ public class TransactionManagementDAO {
 
         long rowId01 = st01.executeUpdateDelete();
 
+        sqLiteDatabase.close();
         if(rowId01 == -1)
+            return false;
+        else
+            return true;
+    }
+
+    public Collection<Transaction> getTransactionDetails(int creditAccount, int debitAccount) {
+        SQLiteDatabase sqLiteDatabase = dbhelper.getWritableDatabase();
+        String[] selectionArgs = {Integer.toString(creditAccount), Integer.toString(debitAccount)};
+
+        Cursor cursor = sqLiteDatabase.rawQuery(TMQueries.TM_Query_TM_TABLE03_SELECT_SEARCH, selectionArgs);
+        Transaction transaction = null;
+        Collection<Transaction> transactionList = new ArrayList<Transaction>();
+        int i = 0;
+
+        if(cursor.getCount() > 0) {
+            while(cursor.moveToNext()) {
+                transaction = new Transaction(cursor.getInt(0), cursor.getInt(1), DateConverter.getSqlDateFromString(cursor.getString(2)), cursor.getDouble(3), cursor.getInt(4));
+                transactionList.add(transaction);
+                i++;
+            }
+        }
+        sqLiteDatabase.close();
+        if(i == 0)
+            transactionList = null;
+
+        return transactionList;
+    }
+
+    public boolean removeTransaction(int transactionId, Account account) {
+        SQLiteDatabase sqLiteDatabase = dbhelper.getWritableDatabase();
+        String[] selectionArgs = {Integer.toString(transactionId)};
+        Transaction trans = null;
+        Cursor cursor = sqLiteDatabase.rawQuery(TMQueries.TM_Query_TM_TABLE03_SELECT_SEARCH_USING_TRAN_ID, selectionArgs);
+        int i = 0;
+
+        if(cursor.getCount() > 0) {
+            cursor.moveToFirst();
+
+            int creditAccount = cursor.getInt(1);
+
+            if(creditAccount == account.getAccountNo()) {
+                i = sqLiteDatabase.delete(TMQueries.TM_TABLE03, TMQueries.TM_TABLE03_COL01 + "=?", selectionArgs);
+            }
+        }
+
+        sqLiteDatabase.close();
+
+        if(i == 0)
             return false;
         else
             return true;

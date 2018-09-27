@@ -33,6 +33,16 @@
                     android:id="@+id/nav_drawer_menu_id_option_05"
                     android:icon="@mipmap/make_a_transaction"
                     android:title="@string/string_id_navigation_menu_option_05" />
+
+                <item
+                    android:id="@+id/nav_drawer_menu_id_option_05_01"
+                    android:icon="@drawable/transaction_search"
+                    android:title="@string/string_id_navigation_menu_option_05_01" />
+
+                <item
+                    android:id="@+id/nav_drawer_menu_id_option_05_02"
+                    android:icon="@drawable/transaction_delete"
+                    android:title="@string/string_id_navigation_menu_option_05_02" />
             </menu>
         </item>
 

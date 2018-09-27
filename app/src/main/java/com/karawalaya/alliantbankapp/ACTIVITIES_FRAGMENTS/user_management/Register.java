@@ -106,7 +106,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         if (!umv.isInputEditTextFilled(textInputEditTextAccountNo, textInputLayoutAccountNo, getString(R.string.error_message_account_no_empty))) {
             return;
         }
-        if(!umv.isNumbericOnly(textInputEditTextAccountNo, textInputLayoutAccountNo, getString(R.string.error_message_account_no_invalid))) {
+        if(!umv.isNumericOnly(textInputEditTextAccountNo, textInputLayoutAccountNo, getString(R.string.error_message_account_no_invalid))) {
             return;
         }
         if (!umv.isInputEditTextFilled(textInputEditTextUserName, textInputLayoutUserName, getString(R.string.error_message_username_empty))) {
@@ -121,7 +121,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         }
         String customerId = umdao.seeWhetherPhysicallyRegistered(textInputEditTextEmail.getText().toString().trim(), textInputEditTextAccountNo.getText().toString());
         if(customerId != null){
-            if(!umdao.alreadyAOnlineUser(customerId)) {
+            if(!umdao.alreadyAnOnlineUser(customerId)) {
                 OnlineUser onlineUser = new OnlineUser();
                 onlineUser.setCustomerId(customerId);
                 onlineUser.setUserName(textInputEditTextUserName.getText().toString());
@@ -130,6 +130,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     Toast.makeText(this, getString(R.string.success_message_registered), Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(this, Login.class);
                     startActivity(intent);
+                    finish();////===================================================
                 } else {
                     Toast.makeText(this, "Sorry, some error!", Toast.LENGTH_LONG).show();
                     emptyInputEditText();
@@ -139,6 +140,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 emptyInputEditText();
                 Intent intent = new Intent(this, Login.class);
                 startActivity(intent);
+                finish();///////////============================================================
             }
         } else {
             Toast.makeText(this, getString(R.string.error_message_no_physical_account), Toast.LENGTH_LONG).show();

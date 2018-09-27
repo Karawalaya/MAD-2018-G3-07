@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_transaction_01_02"
     tools:context=".ACTIVITIES_FRAGMENTS.transaction_management.MakeATransaction">
 
 
@@ -57,15 +58,14 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:gravity="left"
-            android:text="TextView"
+            android:text="@string/string_id_make_a_transaction_tv03"
             android:textColor="@color/colorBlack"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/make_a_transaction_TV04"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/make_a_transaction_TV02"
-            tools:text="@string/string_id_make_a_transaction_tv03" />
+            app:layout_constraintTop_toBottomOf="@+id/make_a_transaction_TV02" />
 
         <TextView
             android:id="@+id/make_a_transaction_TV04"
@@ -77,7 +77,7 @@
             android:layout_marginStart="16dp"
             android:gravity="right"
             android:text="@string/string_id_make_a_transaction_tv04"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@color/colorBlack"
             android:textSize="18sp"
             android:textStyle="italic"
             app:layout_constraintBaseline_toBaselineOf="@+id/make_a_transaction_TV03"
@@ -115,7 +115,8 @@
             app:layout_constraintBaseline_toBaselineOf="@+id/make_a_transaction_TV05"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/make_a_transaction_TV05" />
+            app:layout_constraintStart_toEndOf="@+id/make_a_transaction_TV05"
+            android:textColor="@color/colorBlack"/>
 
         <TextView
             android:id="@+id/make_a_transaction_TV07"
@@ -210,7 +211,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/rounded_button_transactions"
             android:text="@string/string_id_make_a_transaction_tv12"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -9,6 +9,8 @@
     <string name="string_id_navigation_menu_option_03">Account Balance</string>
     <string name="string_id_navigation_menu_option_04">Transaction History</string>
     <string name="string_id_navigation_menu_option_05">Make a Transaction</string>
+    <string name="string_id_navigation_menu_option_05_01">Search for Transactions</string>
+    <string name="string_id_navigation_menu_option_05_02">Remove a Transaction</string>
     <string name="string_id_navigation_menu_option_06">Apply for Loan</string>
     <string name="string_id_navigation_menu_option_07">Lodge a Complaint</string>
     <string name="string_id_navigation_menu_section_01">Personal Information</string>
@@ -30,10 +32,10 @@
     <string name="string_id_account_balance_tv_table_balance">Balance (Rs.)</string>
 
     <string name="string_id_transaction_history_tv_01">Transactions</string>
-    <string name="string_id_transaction_history_tv_table_head01">Credit Account</string>
+    <string name="string_id_transaction_history_tv_table_head01">Credit Acc.</string>
     <string name="string_id_transaction_history_tv_table_head02">Date</string>
     <string name="string_id_transaction_history_tv_table_head03">Amount</string>
-    <string name="string_id_transaction_history_tv_table_head04">Debit Account</string>
+    <string name="string_id_transaction_history_tv_table_head04">Debit Acc.</string>
 
     <string name="string_id_make_a_transaction_tv01">Your Account Details</string>
     <string name="string_id_make_a_transaction_tv02">Full Name </string>
@@ -47,6 +49,30 @@
     <string name="string_id_make_a_transaction_tv10">Transfer Amount : </string>
     <string name="string_id_make_a_transaction_tv11">xxx.xx</string>
     <string name="string_id_make_a_transaction_tv12">TRANSFER</string>
+
+    <string name="string_id_search_transactions_tv01">Search Transactions by Debit Account</string>
+    <string name="string_id_search_transactions_et01">Account No. (9 digit)</string>
+    <string name="string_id_search_transactions_btn01">Search</string>
+
+    <string name="string_id_error_field_cannot_be_empty">This field cannot be empty!</string>
+    <string name="string_id_error_field_should_only_contain_numeric">This field must only contain numeric values!</string>
+    <string name="string_id_error_field_should_be_nine_digit">This field must have nine digits!</string>
+    <string name="string_id_error_credit_and_debit_cannot_be_the_same">Credit account and debit account cannot be same!</string>
+    <string name="string_id_error_field_should_only_contain_double">This field should only contain a double value!</string>
+    <string name="string_id_error_field_should_be_positive">This field should only contain a positive value!</string>
+    <string name="string_id_error_transfer_invalid">You can only transfer an amount less than current balance!</string>
+
+    <string name="string_id_error_search_transactions">You cannot search transactions for the same account!</string>
+    <string name="string_id_search_transactions_alert_title">Transaction List</string>
+    <string name="string_id_search_transactions_alert_box_error">No Data Found</string>
+
+    <string name="string_id_remove_a_transaction_tv01">Remove a Transaction (Illogical)</string>
+    <string name="string_id_remove_a_transaction_et01">Transaction ID (Integer)</string>
+    <string name="string_id_remove_a_transaction_btn01">Remove</string>
+
+    <string name="string_id_remove_a_transaction_error">You can only remove transactions credited by your account!</string>
+    <string name="string_id_remove_a_transaction_success">Transaction removed success fully!</string>
+    <string name="string_id_remove_a_transaction_alert_title">Transaction Removal!</string>
 
     <!--
         USER MANAGEMENT
@@ -73,7 +99,16 @@
     <string name="error_message_already_a_online_user">You already have an online account!</string>
     <string name="error_message_login_not_valid">Credentials are wrong!</string>
     <string name="success_message_registered">You have successfully registered!</string>
+    <string name="search_by_transaction_tv01">Search Transactions by Transaction ID</string>
+    <string name="search_by_transaction_et01">Transaction ID (integer)</string>
+    <string name="search_by_transaction_btn01">Search</string>
+    <string name="search_by_transaction_alert_title01">Transaction Found</string>
+    <string name="search_by_transaction_alert_title02">Transaction Not Found</string>
+    <string name="search_by_transaction_alert_error">No transaction details were found in respect to the TransactionId: </string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_by_transaction_error_not_filled">Transaction Id cannot be empty!</string>
+    <string name="search_by_transaction_error_not_int">Transaction Id cannot be anything other than a number!</string>
+    <string name="search_by_transaction_error_neg_or_zero">Transaction Id must be a value greater than 0!</string>
+
+    <string name="logout">Log out</string>
 </resources>
