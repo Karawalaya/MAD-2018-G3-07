@@ -31,6 +31,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private AppCompatButton appCompatButtonLogin;
 
     private AppCompatTextView textViewLinkRegister;
+    private AppCompatTextView textViewLinkForgotPassword;
 
     UserManagementDAO umdao = null;
     UMValidator umv = null;
@@ -75,6 +76,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         appCompatButtonLogin = (AppCompatButton) findViewById(R.id.appCompatButtonLogin);
 
         textViewLinkRegister = (AppCompatTextView) findViewById(R.id.textViewLinkRegister);
+        textViewLinkForgotPassword = (AppCompatTextView) findViewById(R.id.textViewLinkForgotPassword);
+
     }
 
     private void initObjects() {
@@ -105,6 +108,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         appCompatButtonLogin.setOnClickListener(this);
         textViewLinkRegister.setOnClickListener(this);
+        textViewLinkForgotPassword.setOnClickListener(this);
+
     }
 
     @Override
@@ -116,6 +121,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             case R.id.textViewLinkRegister:
                 Intent intentRegister = new Intent(getApplicationContext(), Register.class);
                 startActivity(intentRegister);
+                break;
+            case R.id.textViewLinkForgotPassword:
+                Intent intentForgotPassword = new Intent(getApplicationContext(), ForgotPassword.class);
+                startActivity(intentForgotPassword);
                 break;
         }
     }

@@ -93,7 +93,6 @@ public class RemoveATransaction extends Fragment {
                     }
                 }
         );
-
     }
 
     public void doStuff() {

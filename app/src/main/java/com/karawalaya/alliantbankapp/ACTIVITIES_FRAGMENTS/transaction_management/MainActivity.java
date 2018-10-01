@@ -133,6 +133,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_drawer_menu_id_option_01:
+                Toast.makeText(this, R.string.string_id_navigation_menu_option_02, Toast.LENGTH_LONG).show();
+
+                accountInformation = AccountInformation.getInstance(customer);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, accountInformation, "AccountInformation").commit();
                 getSupportActionBar().setSubtitle("Account Information");
                 menuItem.setCheckable(true);
@@ -140,6 +143,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_drawer_menu_id_option_02:
+                Toast.makeText(this, R.string.string_id_navigation_menu_option_02, Toast.LENGTH_LONG).show();
+
+                updateDetails = UpdateDetails.getInstance(customer);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, updateDetails, "UpdateDetails").commit();
                 getSupportActionBar().setSubtitle("Update Details");
                 menuItem.setCheckable(true);

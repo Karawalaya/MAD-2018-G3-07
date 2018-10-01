@@ -24,4 +24,5 @@ public class UMQueries {
     public static final String UM_Query_VERIFY_ONLINE_USER = "SELECT * FROM " + UM_TABLE01 + " WHERE " + UM_TABLE01_COL03 + " =? AND " + UM_TABLE01_COL04 + " =?;";
 
     public static final String UM_Query_SEARCH_TRANSACTION_ON_ID = "SELECT * FROM " + TMQueries.TM_TABLE03 + " WHERE " + TMQueries.TM_TABLE03_COL01 + " =?;";
+    public static final String UM_Query_REMOVE_USER = "DELETE ";
 }

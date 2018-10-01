@@ -81,6 +81,9 @@ import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.DateConve
 import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Transaction;
 import com.karawalaya.alliantbankapp.POJO_MODEL.user_management.OnlineUser;
 
+import static com.karawalaya.alliantbankapp.DAO_SERVICE.user_management.UMQueries.UM_TABLE01;
+import static com.karawalaya.alliantbankapp.DAO_SERVICE.user_management.UMQueries.UM_TABLE01_COL04;
+
 public class UserManagementDAO {
     private DBHelper dbhelper;
 
@@ -115,9 +118,9 @@ public class UserManagementDAO {
         ContentValues values = new ContentValues();
         values.put(UMQueries.UM_TABLE01_COL01, onlineUser.getCustomerId());
         values.put(UMQueries.UM_TABLE01_COL03, onlineUser.getUserName());
-        values.put(UMQueries.UM_TABLE01_COL04, onlineUser.getPassword());
+        values.put(UM_TABLE01_COL04, onlineUser.getPassword());
 
-        long result = sqLiteDatabase.insert(UMQueries.UM_TABLE01, null, values);
+        long result = sqLiteDatabase.insert(UM_TABLE01, null, values);
 
         if(result == -1)
             bool = false;
@@ -128,7 +131,7 @@ public class UserManagementDAO {
         return bool;
     }
 
-/*    public boolean checkUser(String email) {
+   public boolean checkUser(String email) {
         String[] columns = {
                 UMQueries.UM_TABLE01_COL01
         };
@@ -162,7 +165,7 @@ public class UserManagementDAO {
         if(cursorCount > 0)
             return true;
         return false;
-    }*/
+    }
 
     public boolean alreadyAnOnlineUser(String customerId) {
         boolean bool = false;
@@ -237,5 +240,28 @@ public class UserManagementDAO {
         }
 
         return transaction;
+    }
+
+    public void updatePassword(String email, String password){
+        SQLiteDatabase db = dbhelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(UM_TABLE01_COL04, password);
+        //db.update(UM_TABLE01 , values, COLUMN_USER_EMAIL+" = ?",new String[] { email });
+        db.update(UM_TABLE01, values, UM_TABLE01_COL04 + " = ?" , new String[]{ email} );
+        db.close();
+    }
+
+    public boolean removeUser(String customerId) {
+        SQLiteDatabase sqLiteDatabase = dbhelper.getWritableDatabase();
+        String[] selectionArgs = {customerId};
+
+        int i = sqLiteDatabase.delete(TMQueries.TM_TABLE01, TMQueries.TM_TABLE01_COL01 + "=?", selectionArgs);
+
+        sqLiteDatabase.close();
+
+        if(i == 0)
+            return false;
+        else
+            return true;
     }
 }

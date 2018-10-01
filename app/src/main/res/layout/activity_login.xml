@@ -74,7 +74,17 @@
             android:gravity="center"
             android:text="@string/link_not_member"
             android:textSize="16sp"
-            android:textColor="@color/colorText" />
+            android:textColor="@color/colorPrimary01" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/textViewLinkForgotPassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/link_forgot_password"
+            android:textColor="@color/colorPrimary01"
+            android:textSize="16sp" />
 
     </android.support.v7.widget.LinearLayoutCompat>
 </android.support.v4.widget.NestedScrollView>
