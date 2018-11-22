@@ -24,6 +24,7 @@ import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.TMValidat
 import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Transaction;
 import com.karawalaya.alliantbankapp.R;
 
+import java.text.DecimalFormat;
 import java.util.Collection;
 
 public class MakeATransaction extends Fragment implements View.OnClickListener {
@@ -85,7 +86,9 @@ public class MakeATransaction extends Fragment implements View.OnClickListener {
             account = tmdao.getAccountDetails(customer);
             if(account != null) {
                 make_a_transaction_TV04.setText(Integer.toString(account.getAccountNo()));
-                make_a_transaction_TV06.setText(Double.toString(account.getBalance()));
+                DecimalFormat df = new DecimalFormat();
+                df.setMaximumFractionDigits(2);
+                make_a_transaction_TV06.setText(df.format(account.getBalance()));
 
                 make_a_transaction_BTN01.setOnClickListener(this);
             } else {

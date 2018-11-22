@@ -4,7 +4,7 @@
     -->
     <string name="string_id_app_name">AlliantBankApp</string>
     <string name="string_id_Action_Bar_Title">AlliantApp</string>
-    <string name="string_id_navigation_menu_option_01">Update Details</string>
+    <string name="string_id_navigation_menu_option_01">Delete Account</string>
     <string name="string_id_navigation_menu_option_02">Account Information</string>
     <string name="string_id_navigation_menu_option_03">Account Balance</string>
     <string name="string_id_navigation_menu_option_04">Transaction History</string>

@@ -17,6 +17,8 @@ import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Account;
 import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Customer;
 import com.karawalaya.alliantbankapp.R;
 
+import java.text.DecimalFormat;
+
 public class AccountBalance extends Fragment {
     //Bundle Arguments.
     private static final String CUST_VAR_ACCOUNT_BALANCE = "customer";
@@ -71,7 +73,9 @@ public class AccountBalance extends Fragment {
             if(account != null) {
                 Account_Balance_TV01.setText(customer.getFirstName() + " " + customer.getLastName());
                 Account_Balance_TV03.setText(account.getAccountType());
-                Account_Balance_TV04.setText(Double.toString(account.getBalance()));
+                DecimalFormat df = new DecimalFormat();
+                df.setMaximumFractionDigits(2);
+                Account_Balance_TV04.setText(df.format(account.getBalance()));
             } else {
 
             }

@@ -12,11 +12,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS.user_management.AccountInformation;
 import com.karawalaya.alliantbankapp.ACTIVITIES_FRAGMENTS.user_management.UpdateDetails;
-import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Account;
 import com.karawalaya.alliantbankapp.POJO_MODEL.transaction_management.Customer;
 import com.karawalaya.alliantbankapp.R;
 
@@ -29,6 +30,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      */
     private Toolbar mainActionBar;
     private DrawerLayout mainDrawerLayout;
+    private TextView navigation_header_Username;
+    private TextView navigation_header_Account_Number;
+    private TextView navigation_header_Email;
 
     /**
      * Fragment Attributes
@@ -85,6 +89,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mainDrawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
+        NavigationView navigation_view = (NavigationView) findViewById(R.id.navigation_view);
+        View headerView = navigation_view.getHeaderView(0);
+
+        navigation_header_Username = (TextView) headerView.findViewById(R.id.navigation_header_Username);
+        navigation_header_Account_Number = (TextView) headerView.findViewById(R.id.navigation_header_Account_Number);
+        navigation_header_Email = (TextView) headerView.findViewById(R.id.navigation_header_Email);
+
+        navigation_header_Username.setText(customer.getOnlineUser().getUserName());
+        navigation_header_Account_Number.setText(customer.getFirstName() + " " + customer.getLastName());
+        navigation_header_Email.setText(customer.getEmail());
+
         /**
          * Here, If there is no saved instance of the MainActivity, (Basically if the activity is destroyed or opening for the first time),
          *         Homepage is set as the fragment for the initial view.
@@ -94,6 +109,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             transaction.add(R.id.fragment_container, new HomePage());
             transaction.addToBackStack(null);
             transaction.commit();*/
+            /*TextView navigation_header_Username = (TextView) findViewById(R.id.navigation_header_Username);
+            navigation_header_Username.setText(customer.getOnlineUser().getUserName());*/
 
             homePage = HomePage.getInstance(customer);
 //            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, homePage).addToBackStack("Home").commit();
@@ -143,11 +160,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_drawer_menu_id_option_02:
-                Toast.makeText(this, R.string.string_id_navigation_menu_option_02, Toast.LENGTH_LONG).show();
+                Toast.makeText(this, R.string.string_id_navigation_menu_option_01, Toast.LENGTH_LONG).show();
 
                 updateDetails = UpdateDetails.getInstance(customer);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, updateDetails, "UpdateDetails").commit();
-                getSupportActionBar().setSubtitle("Update Details");
+                getSupportActionBar().setSubtitle("Delete Account");
                 menuItem.setCheckable(true);
 //                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 break;

@@ -203,7 +203,7 @@ public class SearchTransactions extends Fragment implements View.OnClickListener
             return;
         }
 
-        Transaction transaction = umdao.getTransactionOnId(Integer.parseInt(search_transactions_ET02.getText().toString()), account);
+        Transaction transaction = umdao.getTransaction(Integer.parseInt(search_transactions_ET02.getText().toString()), account);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setCancelable(true);
 

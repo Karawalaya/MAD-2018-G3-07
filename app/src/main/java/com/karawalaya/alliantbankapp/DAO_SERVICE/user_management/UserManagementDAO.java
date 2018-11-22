@@ -223,7 +223,7 @@ public class UserManagementDAO {
         return customer;
     }
 
-    public Transaction getTransactionOnId(int TransactionId, Account account) {
+    public Transaction getTransaction(int TransactionId, Account account) {
         SQLiteDatabase sqLiteDatabase = dbhelper.getWritableDatabase();
         String[] selectionArgs = {Integer.toString(TransactionId)};
         Transaction transaction = null;

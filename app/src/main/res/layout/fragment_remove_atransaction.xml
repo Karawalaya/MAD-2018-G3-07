@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ACTIVITIES_FRAGMENTS.transaction_management.RemoveATransaction"
-    android:background="@drawable/background_transaction_01_02">
+    android:background="@drawable/background_login_register">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"

@@ -34,10 +34,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_username"
-                android:textColorHint="@color/colorText"
+                android:textColorHint="@color/colorTextHint"
                 android:inputType="text"
                 android:maxLines="1"
-                android:textColor="@color/colorText" />
+                android:textColor="@color/colorBlack" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -51,10 +51,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_password"
-                android:textColorHint="@color/colorText"
+                android:textColorHint="@color/colorTextHint"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:textColor="@color/colorText" />
+                android:textColor="@color/colorBlack" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.v7.widget.AppCompatButton
