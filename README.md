@@ -1,4 +1,4 @@
-# Mobile Application Customer Web Portal for a Bank
+# Android based Mobile Application Customer Web Portal for a Bank
 
 # Project Name :
     Mobile Application Customer Web Portal for a Bank
