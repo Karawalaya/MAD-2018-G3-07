@@ -1,4 +1,4 @@
-# Project for MAD Module (2nd Year 2nd Semester)
+# Mobile Application Customer Web Portal for a Bank
 
 # Project Name :
     Mobile Application Customer Web Portal for a Bank
@@ -10,5 +10,8 @@
 # Project Language :
     JAVA/ Android
 
+# Module : 
+    MAD : Mobile Application Development (2nd Year 2nd Semester)
+    
 # Project Group ID : 
     MAD-2018-G3-07
