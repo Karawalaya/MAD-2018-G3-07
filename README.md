@@ -1,7 +1,7 @@
 # Project for MAD Module (2nd Year 2nd Semester)
 
 # Project Name :
-    Customer Web Portal for a Bank
+    Mobile Application Customer Web Portal for a Bank
 
 # Project Members : 
     Samarasekara S.A.M.I.D. (IT17395588)
